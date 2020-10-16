@@ -1,0 +1,78 @@
+- id: '1602703006330'
+  alias: Tag Sampson Fed is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: "randomID"
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.dog_fed
+  mode: single
+- id: '1602703026659'
+  alias: Tag Sampson Medicated is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: "randomID"
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.dog_medicated
+  mode: single
+- id: '1602703040988'
+  alias: Tag Sampson Walked is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: "randomID"
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.dog_walked
+  mode: single
+- id: '1602703653390'
+  alias: Dog Food
+  description: ''
+  trigger:
+  - platform: time
+    at: 05:00:00
+  - platform: time
+    at: '17:00:00'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.dog_fed
+  mode: single
+- id: '1602704156991'
+  alias: Dog Meds
+  description: ''
+  trigger:
+  - platform: time
+    at: 05:00:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.dog_medicated
+  mode: single
+- id: '1602739989563'
+  alias: Dog Walk
+  description: ''
+  trigger:
+  - platform: time
+    at: 05:00:00
+  - platform: state
+    entity_id: switch.dog_walked
+    from: 'off'
+    to: 'on'
+    for: 06:00:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.dog_walked
